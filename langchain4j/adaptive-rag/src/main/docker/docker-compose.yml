@@ -2,12 +2,11 @@ services:
   chroma:
     container_name: chromadb
     image: chromadb/chroma:latest
-    command: "--workers 1 --host 0.0.0.0 --port 8000 --proxy-headers --log-config chromadb/log_config.yml --timeout-keep-alive 30"
+    volumes:
+      - ./chroma-data:/data
+      - ./config.yaml:/config.yaml
     ports:
       - "8000:8000"
-    environment:
-      - IS_PERSISTENT=TRUE
-      - ALLOW_RESET=TRUE
   upsert:
     container_name: upsert
     build:
