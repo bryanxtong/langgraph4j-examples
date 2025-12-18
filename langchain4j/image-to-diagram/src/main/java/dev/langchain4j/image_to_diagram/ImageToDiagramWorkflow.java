@@ -75,7 +75,7 @@ public class ImageToDiagramWorkflow implements ImageToDiagram {
      * @throws Exception if an error occurs during the configuration of the graph.
      */
     public StateGraph<State> workflow() throws Exception {
-        var stateSerializer = new JSONStateSerializer();
+        var stateSerializer = new JSONStateSerializer(State::new);
 
         return new StateGraph<>(State.SCHEMA,stateSerializer)
                 .addNode("agent_describer", describeDiagramImage  )
@@ -108,7 +108,7 @@ public class ImageToDiagramWorkflow implements ImageToDiagram {
      */
     public StateGraph<State> workflowWithCorrection() throws Exception {
 
-        var stateSerializer = new JSONStateSerializer();
+        var stateSerializer = new JSONStateSerializer(State::new);
 
         var diagramCorrectionProcess = new DiagramCorrectionWorkflow().workflow(stateSerializer).compile();
 

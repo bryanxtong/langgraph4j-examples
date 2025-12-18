@@ -15,11 +15,11 @@ usecase "agent_sequence_plantuml"<<Node>>
 usecase "agent_generic_plantuml"<<Node>>
 'hexagon "check state" as condition1<<Condition>>
 "__START__" -down-> "agent_describer"
-'"agent_describer" -down-> "condition1"
-'"condition1" -down-> "agent_sequence_plantuml": "sequence"
-"agent_describer" -down-> "agent_sequence_plantuml": "sequence"
-'"condition1" -down-> "agent_generic_plantuml": "generic"
-"agent_describer" -down-> "agent_generic_plantuml": "generic"
+'"agent_describer" .down.> "condition1"
+'"condition1" .down.> "agent_sequence_plantuml": "sequence"
+"agent_describer" .down.> "agent_sequence_plantuml": "sequence"
+'"condition1" .down.> "agent_generic_plantuml": "generic"
+"agent_describer" .down.> "agent_generic_plantuml": "generic"
 "agent_sequence_plantuml" -down-> "__END__"
 "agent_generic_plantuml" -down-> "__END__"
 @enduml

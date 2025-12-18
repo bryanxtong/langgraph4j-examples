@@ -35,7 +35,7 @@ public class DiagramCorrectionWorkflow implements ImageToDiagram {
      * @throws Exception If an error occurs during the workflow execution
      */
     public StateGraph<State> workflow() throws Exception {
-        return workflow(new JSONStateSerializer());
+        return workflow(new JSONStateSerializer(State::new));
     }
 
     /**

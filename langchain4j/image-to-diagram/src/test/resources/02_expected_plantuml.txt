@@ -13,8 +13,8 @@ circle stop as __END__
 usecase "agent_describer"<<Node>>
 usecase "agent_sequence_plantuml"<<Node>>
 usecase "agent_generic_plantuml"<<Node>>
-rectangle evaluate_result [ {{
-title "evaluate_result"
+package evaluate_result [
+{{
 circle " " as __START__
 circle exit as __END__
 usecase "evaluate_result"<<Node>>
@@ -22,22 +22,22 @@ usecase "agent_review"<<Node>>
 'hexagon "check state" as condition1<<Condition>>
 "__START__" -down-> "evaluate_result"
 "agent_review" -down-> "evaluate_result"
-'"evaluate_result" -down-> "condition1"
-'"condition1" -down-> "agent_review": "ERROR"
-"evaluate_result" -down-> "agent_review": "ERROR"
-'"condition1" -down-> "__END__": "UNKNOWN"
-"evaluate_result" -down-> "__END__": "UNKNOWN"
-'"condition1" -down-> "__END__": "OK"
-"evaluate_result" -down-> "__END__": "OK"
-
-}} ]
+'"evaluate_result" .down.> "condition1"
+'"condition1" .down.> "__END__": "OK"
+"evaluate_result" .down.> "__END__": "OK"
+'"condition1" .down.> "__END__": "UNKNOWN"
+"evaluate_result" .down.> "__END__": "UNKNOWN"
+'"condition1" .down.> "agent_review": "ERROR"
+"evaluate_result" .down.> "agent_review": "ERROR"
+}}
+]
 'hexagon "check state" as condition1<<Condition>>
 "__START__" -down-> "agent_describer"
-'"agent_describer" -down-> "condition1"
-'"condition1" -down-> "agent_sequence_plantuml": "sequence"
-"agent_describer" -down-> "agent_sequence_plantuml": "sequence"
-'"condition1" -down-> "agent_generic_plantuml": "generic"
-"agent_describer" -down-> "agent_generic_plantuml": "generic"
+'"agent_describer" .down.> "condition1"
+'"condition1" .down.> "agent_sequence_plantuml": "sequence"
+"agent_describer" .down.> "agent_sequence_plantuml": "sequence"
+'"condition1" .down.> "agent_generic_plantuml": "generic"
+"agent_describer" .down.> "agent_generic_plantuml": "generic"
 "agent_sequence_plantuml" -down-> "evaluate_result"
 "agent_generic_plantuml" -down-> "evaluate_result"
 "evaluate_result" -down-> "__END__"

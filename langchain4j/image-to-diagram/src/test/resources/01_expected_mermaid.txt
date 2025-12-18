@@ -9,14 +9,14 @@ flowchart TD
 	agent_generic_plantuml("agent_generic_plantuml")
 	%%	condition1{"check state"}
 	__START__:::__START__ --> agent_describer:::agent_describer
-	%%	agent_describer:::agent_describer --> condition1:::condition1
-	%%	condition1:::condition1 -->|sequence| agent_sequence_plantuml:::agent_sequence_plantuml
-	agent_describer:::agent_describer -->|sequence| agent_sequence_plantuml:::agent_sequence_plantuml
-	%%	condition1:::condition1 -->|generic| agent_generic_plantuml:::agent_generic_plantuml
-	agent_describer:::agent_describer -->|generic| agent_generic_plantuml:::agent_generic_plantuml
+	%%	agent_describer:::agent_describer -.-> condition1:::condition1
+	%%	condition1:::condition1 -.->|sequence| agent_sequence_plantuml:::agent_sequence_plantuml
+	agent_describer:::agent_describer -.->|sequence| agent_sequence_plantuml:::agent_sequence_plantuml
+	%%	condition1:::condition1 -.->|generic| agent_generic_plantuml:::agent_generic_plantuml
+	agent_describer:::agent_describer -.->|generic| agent_generic_plantuml:::agent_generic_plantuml
 	agent_sequence_plantuml:::agent_sequence_plantuml --> __END__:::__END__
 	agent_generic_plantuml:::agent_generic_plantuml --> __END__:::__END__
 
-	classDef ___START__ fill:black,stroke-width:1px,font-size:xx-small;
-	classDef ___END__ fill:black,stroke-width:1px,font-size:xx-small;
+	classDef __START__ fill:black,stroke-width:1px,font-size:xx-small;
+	classDef __END__ fill:black,stroke-width:1px,font-size:xx-small;
 
